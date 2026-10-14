@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>최세원 | 그로스 마케터 포트폴리오</title>
+<meta name="description" content="데이터와 콘텐츠로 금융의 진입장벽을 허무는 스타트업 출신 마케터 최세원">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script>
+  // 첫 화면 깜빡임 방지: 페인트 전에 테마 적용
+  (function () {
+    var saved = null;
+    try { saved = localStorage.getItem('color-theme'); } catch (e) {}
+    var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (saved === 'dark' || (!saved && prefersDark)) document.documentElement.classList.add('dark');
+  })();
+</script>
+<style>
+  :root {
+    --paper: #F3F1EB;
+    --card: #FFFFFF;
+    --ink: #111111;
+    --muted: #5C5C5C;
+    --blue: #2438FF;
+    --blue-text: #2438FF;
+    --lime: #C8FF2E;
+    --on-accent: #111111;
+    --shadow: 6px 6px 0 var(--ink);
+    --shadow-sm: 4px 4px 0 var(--ink);
+    --display: 'Anton', 'Pretendard', sans-serif;
+    --body: 'Pretendard', -apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+    --mono: 'JetBrains Mono', ui-monospace, monospace;
+  }
+  .dark {
+    --paper: #0E0E10;
+    --card: #19191C;
+    --ink: #F3F1EB;
+    --muted: #A5A5A5;
+    --blue-text: #8290FF;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--body);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    transition: background .3s, color .3s;
+  }
+  ::selection { background: var(--lime); color: #111; }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+  @media (min-width: 640px) { .wrap { padding: 0 24px; } }
+  section { scroll-margin-top: 88px; }
+
+  /* ---------- NAV ---------- */
+  header.nav {
+    position: sticky; top: 0; z-index: 50;
+    background: var(--paper);
+    border-bottom: 2px solid var(--ink);
+    transition: background .3s;
+  }
+  .nav-inner { height: 68px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 18px; letter-spacing: -.02em; }
+  .logo-mark {
+    width: 36px; height: 36px; display: grid; place-items: center;
+    background: var(--blue); color: #fff; font-family: var(--display); font-size: 17px;
+    border: 2px solid var(--ink); box-shadow: 3px 3px 0 var(--ink);
+    transition: transform .15s;
+  }
+  .logo:hover .logo-mark { transform: rotate(-6deg); }
+  .nav-links { display: none; align-items: center; gap: 4px; font-size: 14px; font-weight: 600; }
+  .nav-links a { padding: 8px 12px; border: 2px solid transparent; transition: border-color .15s; }
+  .nav-links a:hover { border-color: var(--ink); }
+  @media (min-width: 820px) { .nav-links { display: flex; } }
+  .nav-right { display: flex; align-items: center; gap: 8px; }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 10px 18px; font-weight: 700; font-size: 14px; cursor: pointer;
+    border: 2px solid var(--ink); background: var(--lime); color: var(--on-accent);
+    box-shadow: var(--shadow-sm); transition: transform .12s, box-shadow .12s;
+    font-family: var(--body);
+  }
+  .btn:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--ink); }
+  .btn:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--ink); }
+  .btn.blue { background: var(--blue); color: #fff; }
+  .btn.ghost { background: var(--card); color: var(--ink); }
+  .nav-cta-desktop { display: none; }
+  @media (min-width: 820px) { .nav-cta-desktop { display: inline-flex; } .nav-cta-mobile { display: none; } }
+  .nav-cta-mobile { padding: 7px 12px; font-size: 12px; }
+  .icon-btn {
+    width: 40px; height: 40px; display: grid; place-items: center; cursor: pointer;
+    border: 2px solid var(--ink); background: var(--card); color: var(--ink);
+    transition: transform .15s;
+  }
+  .icon-btn:hover { transform: rotate(12deg); }
+  .icon-btn .fa-sun { color: #F5B400; }
+
+  main { padding: 48px 0 32px; }
+  main > * + * { margin-top: 96px; }
+
+  /* ---------- HERO / ABOUT ---------- */
+  .hero { display: grid; gap: 40px; }
+  @media (min-width: 900px) { .hero { grid-template-columns: 1.45fr 1fr; align-items: start; } }
+  .badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 6px 12px; border: 2px solid var(--ink); background: var(--card);
+    font-family: var(--mono); font-size: 12px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
+  }
+  .pulse { width: 9px; height: 9px; border-radius: 50%; background: var(--blue); animation: pulse 1.6s infinite; }
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: .25; } }
+  .hero h1 {
+    font-family: var(--display); font-weight: 400;
+    font-size: clamp(64px, 14vw, 156px); line-height: .88; letter-spacing: -.01em;
+    text-transform: uppercase; margin: 20px 0 8px;
+  }
+  .hero h1 .outline { color: transparent; -webkit-text-stroke: 2px var(--ink); }
+  .hero .kname { font-size: 18px; font-weight: 700; display: flex; align-items: center; gap: 10px; }
+  .hero .kname::before { content: ''; width: 32px; height: 2px; background: var(--ink); }
+  .headline {
+    margin-top: 28px; font-size: clamp(22px, 3.2vw, 30px); font-weight: 800; line-height: 1.35; letter-spacing: -.03em;
+  }
+  .hl { background: var(--lime); color: #111; padding: 0 6px; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+  .intro { margin-top: 20px; color: var(--muted); font-size: 16px; max-width: 60ch; }
+  .intro strong { color: var(--ink); }
+  .intro strong.b { color: var(--blue-text); }
+
+  blockquote.quote {
+    margin-top: 24px; padding: 16px 20px; border: 2px solid var(--ink); border-left-width: 10px; border-left-color: var(--blue);
+    background: var(--card); font-weight: 600; font-size: 15px;
+  }
+  blockquote.quote i { color: var(--blue-text); margin-right: 6px; }
+  blockquote.quote span { display: block; text-align: right; font-family: var(--mono); font-size: 11px; color: var(--muted); margin-top: 6px; font-weight: 500; }
+
+  details.tmi { margin-top: 16px; border: 2px solid var(--ink); background: var(--card); }
+  details.tmi summary {
+    list-style: none; cursor: pointer; padding: 14px 18px; display: flex; justify-content: space-between; align-items: center;
+    font-weight: 700; font-size: 14px;
+  }
+  details.tmi summary::-webkit-details-marker { display: none; }
+  details.tmi summary .chev { transition: transform .2s; }
+  details.tmi[open] summary .chev { transform: rotate(180deg); }
+  details.tmi[open] summary { border-bottom: 2px solid var(--ink); }
+  .kpis { display: grid; grid-template-columns: repeat(3, 1fr); }
+  .kpi { padding: 16px 12px; text-align: center; }
+  .kpi + .kpi { border-left: 2px solid var(--ink); }
+  .kpi b { display: block; font-family: var(--display); font-size: clamp(26px, 5vw, 38px); font-weight: 400; line-height: 1.1; }
+  .kpi small { font-size: 12px; color: var(--muted); }
+
+  /* hero right column */
+  .hero-side { display: flex; flex-direction: column; gap: 20px; }
+  .portrait {
+    position: relative; aspect-ratio: 4/5; border: 2px solid var(--ink); background: var(--blue);
+    box-shadow: 10px 10px 0 var(--lime), 10px 10px 0 2px var(--ink); overflow: hidden;
+    display: grid; place-items: center;
+  }
+  .portrait img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .portrait .initials { font-family: var(--display); font-size: clamp(90px, 22vw, 170px); color: #fff; line-height: 1; letter-spacing: -.02em; }
+  .portrait .tag {
+    position: absolute; left: 12px; bottom: 12px; background: var(--lime); color: #111; border: 2px solid #111;
+    font-family: var(--mono); font-size: 11px; font-weight: 700; padding: 4px 8px; text-transform: uppercase;
+  }
+  .portrait .sticker {
+    position: absolute; top: 14px; right: 14px; width: 74px; height: 74px; border-radius: 50%;
+    background: var(--paper); color: var(--ink); border: 2px solid var(--ink);
+    display: grid; place-items: center; text-align: center; font-weight: 800; font-size: 11px; line-height: 1.2;
+    transform: rotate(12deg);
+  }
+  .quick { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .quick a {
+    border: 2px solid var(--ink); background: var(--card); padding: 12px 14px;
+    display: flex; flex-direction: column; gap: 2px; transition: transform .12s, box-shadow .12s, background .12s;
+  }
+  .quick a:hover { transform: translate(-2px,-2px); box-shadow: var(--shadow-sm); background: var(--lime); color: #111; }
+  .quick a:hover .q-sub { color: #111; }
+  .quick .q-title { font-size: 13px; font-weight: 700; display: flex; align-items: center; gap: 6px; }
+  .quick .q-sub { font-family: var(--mono); font-size: 11px; color: var(--muted); display: flex; justify-content: space-between; align-items: center; }
+
+  /* ---------- MARQUEE ---------- */
+  .marquee {
+    border-top: 2px solid var(--ink); border-bottom: 2px solid var(--ink);
+    background: var(--blue); color: #fff; overflow: hidden; white-space: nowrap; padding: 14px 0;
+  }
+  .marquee-track { display: inline-flex; animation: scroll 32s linear infinite; }
+  .marquee span { font-family: var(--display); font-size: clamp(22px, 3.5vw, 32px); text-transform: uppercase; padding: 0 22px; display: inline-flex; align-items: center; gap: 44px; }
+  .marquee span::after { content: '✦'; color: var(--lime); font-size: .7em; }
+  @keyframes scroll { to { transform: translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce) { .marquee-track, .pulse { animation: none; } html { scroll-behavior: auto; } }
+
+  /* ---------- SECTION HEAD ---------- */
+  .sec-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; margin-bottom: 28px; border-bottom: 2px solid var(--ink); padding-bottom: 14px; }
+  .sec-head h2 { font-family: var(--display); font-weight: 400; font-size: clamp(40px, 7vw, 72px); line-height: .95; text-transform: uppercase; }
+  .sec-head h2 small { display: block; font-family: var(--body); font-size: 15px; font-weight: 700; text-transform: none; letter-spacing: 0; color: var(--muted); margin-bottom: 6px; }
+  .sec-num { font-family: var(--mono); font-size: 13px; font-weight: 700; padding: 4px 10px; border: 2px solid var(--ink); background: var(--lime); color: #111; white-space: nowrap; }
+
+  /* ---------- TABLE ---------- */
+  .table-box { border: 2px solid var(--ink); background: var(--card); box-shadow: var(--shadow); overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 620px; }
+  thead th {
+    text-align: left; padding: 14px 18px; background: var(--ink); color: var(--paper);
+    font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase;
+  }
+  tbody td { padding: 16px 18px; border-top: 2px solid var(--ink); vertical-align: middle; }
+  tbody tr { transition: background .12s; }
+  tbody tr:hover { background: rgba(200, 255, 46, .28); }
+  .dark tbody tr:hover { background: rgba(200, 255, 46, .08); }
+  td.date { font-family: var(--mono); font-size: 12px; font-weight: 700; white-space: nowrap; color: var(--muted); }
+  td.date.now { color: var(--blue-text); }
+  td.org { font-weight: 800; }
+  td.note { color: var(--muted); }
+  .chip { display: inline-block; padding: 3px 10px; border: 2px solid var(--ink); font-size: 12px; font-weight: 700; white-space: nowrap; }
+  .chip.work { background: var(--blue); color: #fff; }
+  .chip.intern { background: var(--card); }
+  .chip.edu { background: var(--lime); color: #111; }
+  .chip.cert { background: var(--paper); }
+
+  .jobs { display: grid; gap: 24px; margin-top: 32px; }
+  @media (min-width: 900px) { .jobs { grid-template-columns: 1.3fr 1fr; } }
+  .job { border: 2px solid var(--ink); background: var(--card); padding: 24px; display: flex; flex-direction: column; gap: 16px; }
+  .job-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; flex-wrap: wrap; }
+  .job h3 { font-size: 20px; font-weight: 800; letter-spacing: -.02em; line-height: 1.3; }
+  .job .role { font-size: 14px; color: var(--blue-text); font-weight: 700; }
+  .period { font-family: var(--mono); font-size: 12px; font-weight: 700; padding: 3px 8px; background: var(--ink); color: var(--paper); white-space: nowrap; }
+  .task h4 { font-size: 15px; font-weight: 800; display: flex; gap: 8px; align-items: baseline; }
+  .task h4::before { content: '→'; color: var(--blue-text); }
+  .task ul { list-style: none; margin-top: 8px; display: grid; gap: 6px; }
+  .task li { font-size: 14px; color: var(--muted); padding-left: 18px; position: relative; }
+  .task li::before { content: ''; position: absolute; left: 4px; top: .7em; width: 6px; height: 6px; background: var(--ink); }
+  .task li mark { background: var(--lime); color: #111; font-weight: 700; padding: 0 3px; }
+
+  /* ---------- PROJECTS ---------- */
+  .project { border: 2px solid var(--ink); background: var(--card); box-shadow: var(--shadow); display: grid; }
+  @media (min-width: 900px) { .project { grid-template-columns: 1.4fr 1fr; } }
+  .project-main { padding: 28px; display: flex; flex-direction: column; gap: 16px; }
+  .project-meta { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+  .project-num { font-family: var(--display); font-size: 64px; line-height: .8; color: transparent; -webkit-text-stroke: 2px var(--ink); }
+  .project h3 { font-size: clamp(20px, 2.6vw, 26px); font-weight: 800; letter-spacing: -.03em; line-height: 1.3; }
+  .project p { color: var(--muted); font-size: 15px; }
+  .kv { display: grid; gap: 10px; font-size: 14px; }
+  .kv div { display: grid; grid-template-columns: 76px 1fr; gap: 12px; }
+  .kv dt { font-family: var(--mono); font-size: 11px; font-weight: 700; text-transform: uppercase; padding-top: 3px; color: var(--muted); }
+  .roles { display: flex; flex-wrap: wrap; gap: 6px; }
+  .roles span { border: 2px solid var(--ink); padding: 2px 10px; font-size: 13px; font-weight: 600; }
+  .project-stats { background: var(--blue); color: #fff; border-top: 2px solid var(--ink); display: grid; }
+  @media (min-width: 900px) { .project-stats { border-top: 0; border-left: 2px solid var(--ink); } }
+  .stat { padding: 22px 28px; display: flex; flex-direction: column; justify-content: center; }
+  .stat + .stat { border-top: 2px solid var(--ink); }
+  .stat b { font-family: var(--display); font-weight: 400; font-size: clamp(40px, 6vw, 56px); line-height: 1; }
+  .stat b em { font-style: normal; color: var(--lime); }
+  .stat small { font-size: 13px; opacity: .85; margin-top: 4px; }
+
+  /* ---------- SKILLS ---------- */
+  .skills { display: grid; gap: 20px; }
+  @media (min-width: 820px) { .skills { grid-template-columns: repeat(3, 1fr); } }
+  .skill-card { border: 2px solid var(--ink); background: var(--card); padding: 22px; display: flex; flex-direction: column; gap: 16px; transition: transform .15s, box-shadow .15s; }
+  .skill-card:hover { transform: translate(-3px,-3px); box-shadow: var(--shadow); }
+  .skill-card h3 { font-family: var(--mono); font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; display: flex; align-items: center; gap: 10px; }
+  .skill-card h3 i { width: 32px; height: 32px; display: grid; place-items: center; background: var(--ink); color: var(--paper); font-size: 13px; }
+  .pills { display: flex; flex-wrap: wrap; gap: 8px; }
+  .pill { padding: 5px 12px; border: 2px solid var(--ink); font-size: 13px; font-weight: 700; background: var(--paper); transition: background .12s, color .12s; }
+  .pill:hover { background: var(--lime); color: #111; }
+  .skill-note { font-size: 13px; color: var(--muted); border-top: 2px dashed var(--ink); padding-top: 12px; display: grid; gap: 4px; }
+
+  /* ---------- CONTACT ---------- */
+  .contact { display: grid; gap: 24px; }
+  @media (min-width: 960px) { .contact { grid-template-columns: 3fr 2fr; } }
+  .form-box { border: 2px solid var(--ink); background: var(--card); padding: 28px; box-shadow: var(--shadow); }
+  .form-box form { display: grid; gap: 16px; }
+  .row2 { display: grid; gap: 16px; }
+  @media (min-width: 640px) { .row2 { grid-template-columns: 1fr 1fr; } }
+  label { display: block; font-size: 13px; font-weight: 700; margin-bottom: 6px; }
+  label .req { color: var(--blue-text); }
+  input, select, textarea {
+    width: 100%; padding: 12px 14px; font: inherit; font-size: 14px;
+    background: var(--paper); color: var(--ink); border: 2px solid var(--ink); border-radius: 0;
+    outline: none; transition: box-shadow .12s;
+  }
+  input:focus, select:focus, textarea:focus { box-shadow: 4px 4px 0 var(--blue); }
+  textarea { resize: vertical; min-height: 120px; }
+  .form-actions { display: flex; gap: 10px; }
+  .form-actions .btn.blue { flex: 1; padding: 14px; }
+  .form-hint { font-size: 12px; color: var(--muted); }
+
+  .info-box { border: 2px solid var(--ink); background: var(--lime); color: #111; padding: 28px; display: flex; flex-direction: column; gap: 20px; }
+  .info-box h3 { font-family: var(--display); font-weight: 400; font-size: 44px; line-height: .95; text-transform: uppercase; }
+  .info-box p { font-size: 14px; }
+  .channels { display: grid; gap: 10px; }
+  .channel {
+    display: flex; align-items: center; gap: 12px; padding: 12px 14px; background: #fff; border: 2px solid #111;
+    transition: transform .12s, box-shadow .12s;
+  }
+  .channel:hover { transform: translate(-2px,-2px); box-shadow: 4px 4px 0 #111; }
+  .channel i.lead { width: 36px; height: 36px; display: grid; place-items: center; background: #111; color: #C8FF2E; flex-shrink: 0; }
+  .channel .c-text { overflow: hidden; flex: 1; }
+  .channel .c-label { display: block; font-family: var(--mono); font-size: 10px; font-weight: 700; text-transform: uppercase; color: #555; }
+  .channel .c-val { display: block; font-size: 14px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+  /* ---------- FOOTER ---------- */
+  footer { border-top: 2px solid var(--ink); margin-top: 96px; }
+  .foot-big { font-family: var(--display); font-size: clamp(56px, 15vw, 190px); line-height: .85; text-transform: uppercase; padding: 32px 0 20px; letter-spacing: -.01em; overflow: hidden; white-space: nowrap; }
+  .foot-big .outline { color: transparent; -webkit-text-stroke: 2px var(--ink); }
+  .foot-bar { border-top: 2px solid var(--ink); padding: 20px 0 28px; display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; align-items: center; font-size: 12px; color: var(--muted); }
+  .foot-bar .mono { font-family: var(--mono); }
+  .top-btn { padding: 6px 12px; font-size: 12px; }
+</style>
+</head>
+<body>
+
+<!-- Sticky Navigation -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a href="#" class="logo" aria-label="맨 위로">
+      <span class="logo-mark">SW</span>
+      <span>최세원</span>
+    </a>
+    <nav class="nav-links" aria-label="주요 메뉴">
+      <a href="#about">소개</a>
+      <a href="#experience">경력</a>
+      <a href="#projects">프로젝트</a>
+      <a href="#skills">스킬</a>
+    </nav>
+    <div class="nav-right">
+      <button id="theme-toggle" class="icon-btn" type="button" aria-label="테마 전환">
+        <i id="icon-moon" class="fa-solid fa-moon"></i>
+        <i id="icon-sun" class="fa-solid fa-sun" style="display:none"></i>
+      </button>
+      <a href="#contact" class="btn nav-cta-desktop">연락하기 <i class="fa-solid fa-arrow-right"></i></a>
+      <a href="#contact" class="btn nav-cta-mobile">연락하기</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- Profile / Hero -->
+  <section id="about" class="wrap">
+    <div class="hero">
+      <div>
+        <span class="badge"><span class="pulse"></span>Growth Marketer · Fintech</span>
+        <h1>Choi<br><span class="outline">Sewon</span></h1>
+        <p class="kname">최세원</p>
+
+        <p class="headline">
+          데이터와 콘텐츠로<br>
+          <span class="hl">금융의 진입장벽을 허무는</span><br>
+          스타트업 출신 마케터
+        </p>
+
+        <div class="intro">
+          <p>안녕하세요! 금융 서비스를 사용자 친화적인 언어로 재해석하고, 데이터 기반으로 성장을 만들어내는 마케터 최세원입니다.</p>
+          <p style="margin-top:10px">어려운 은행 및 금융 상품을 직관적인 비주얼과 콘텐츠로 바꿈으로써, 고객의 <strong class="b">행동 유도(Action)</strong>와 <strong class="b">앱 체류 시간(Engagement)</strong>을 극대화하는 데 강점이 있습니다.</p>
+        </div>
+
+        <blockquote class="quote">
+          <i class="fa-solid fa-quote-left"></i>어려운 금융을, 누구나 누를 수 있는 버튼으로.
+          <span>— Choi Sewon's Marketing Principle</span>
+        </blockquote>
+
+        <details class="tmi">
+          <summary>
+            <span><i class="fa-solid fa-chart-simple" style="color:var(--blue-text);margin-right:8px"></i>숫자로 보는 최세원 (클릭)</span>
+            <i class="fa-solid fa-chevron-down chev"></i>
+          </summary>
+          <div class="kpis">
+            <div class="kpi"><b>350%</b><small>캠페인 ROAS</small></div>
+            <div class="kpi"><b>+180%</b><small>신규 계좌 개설 (QoQ)</small></div>
+            <div class="kpi"><b>-40%</b><small>팝업 캠페인 CAC</small></div>
+          </div>
+        </details>
+      </div>
+
+      <aside class="hero-side">
+        <div class="portrait">
+          <!-- 프로필 사진이 있으면 아래 주석을 풀고 src를 바꿔주세요 -->
+          <!-- <img src="profile.jpg" alt="최세원 프로필 사진"> -->
+          <span class="initials" aria-hidden="true">CSW</span>
+          <span class="sticker">DATA<br>×<br>CONTENT</span>
+          <span class="tag">Growth · CRM · Content</span>
+        </div>
+        <div class="quick">
+          <a href="https://www.instagram.com/sewon__n" target="_blank" rel="noopener">
+            <span class="q-title"><i class="fa-brands fa-instagram"></i> Instagram</span>
+            <span class="q-sub">@sewon__n <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+          </a>
+          <a href="https://brunch.co.kr/@sewon" target="_blank" rel="noopener">
+            <span class="q-title"><i class="fa-solid fa-pen-nib"></i> Brunch</span>
+            <span class="q-sub">글 읽기 <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+          </a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener">
+            <span class="q-title"><i class="fa-brands fa-linkedin"></i> LinkedIn</span>
+            <span class="q-sub">경력 보기 <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+          </a>
+          <a href="mailto:raon531@naver.com">
+            <span class="q-title"><i class="fa-regular fa-envelope"></i> Email</span>
+            <span class="q-sub">메일 쓰기 <i class="fa-solid fa-arrow-right"></i></span>
+          </a>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Marquee -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Growth Marketing</span><span>CRM</span><span>Short-form Content</span><span>A/B Testing</span><span>Fintech</span><span>Data Driven</span>
+      <span>Growth Marketing</span><span>CRM</span><span>Short-form Content</span><span>A/B Testing</span><span>Fintech</span><span>Data Driven</span>
+    </div>
+  </div>
+
+  <!-- Experience & Education -->
+  <section id="experience" class="wrap">
+    <div class="sec-head">
+      <h2><small>경력 · 학력 · 자격</small>Experience</h2>
+      <span class="sec-num">01 / 04</span>
+    </div>
+
+    <div class="table-box">
+      <table>
+        <thead>
+          <tr><th scope="col">기간</th><th scope="col">구분</th><th scope="col">소속 / 기관</th><th scope="col">비고</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="date now">2023.03 ~ 현재</td>
+            <td><span class="chip work">직장</span></td>
+            <td class="org">ABC 핀테크 / 챌린저뱅크</td>
+            <td class="note">그로스 마케터 (Growth Marketer)</td>
+          </tr>
+          <tr>
+            <td class="date">2022.09 ~ 2023.02</td>
+            <td><span class="chip intern">인턴</span></td>
+            <td class="org">XYZ 스타트업</td>
+            <td class="note">콘텐츠 마케팅 인턴</td>
+          </tr>
+          <tr>
+            <td class="date">2018.03 ~ 2022.02</td>
+            <td><span class="chip edu">학력</span></td>
+            <td class="org">한국대학교</td>
+            <td class="note">경영학 / 신문방송학 학사 졸업</td>
+          </tr>
+          <tr>
+            <td class="date">2022.08</td>
+            <td><span class="chip cert">자격</span></td>
+            <td class="org">GA4 (Google Analytics) IQ</td>
+            <td class="note">Google</td>
+          </tr>
+          <tr>
+            <td class="date">2022.05</td>
+            <td><span class="chip cert">자격</span></td>
+            <td class="org">검색광고마케터 1급</td>
+            <td class="note">한국정보통신진흥협회</td>
+          </tr>
+          <tr>
+            <td class="date">2021.11</td>
+            <td><span class="chip cert">자격</span></td>
+            <td class="org">SQLD (SQL 개발자)</td>
+            <td class="note">한국데이터산업진흥원</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="jobs">
+      <article class="job">
+        <div class="job-top">
+          <div>
+            <h3>ABC 핀테크 / 챌린저뱅크</h3>
+            <p class="role">그로스 마케터 (Growth Marketer)</p>
+          </div>
+          <span class="period">2023.03 – NOW</span>
+        </div>
+        <div class="task">
+          <h4>2030 타겟 금융 상품(청년 적금/모임통장) 마케팅 캠페인 총괄</h4>
+          <ul>
+            <li>SNS 숏폼(Reels, Shorts) 비디오 및 디스플레이 광고 소재 직접 제작 (프리미어 프로, 포토샵 활용)</li>
+            <li><mark>ROAS 350%</mark> 달성 및 신규 계좌 개설 유저 수 전분기 대비 <mark>180% 증가</mark></li>
+          </ul>
+        </div>
+        <div class="task">
+          <h4>CRM & 인앱 프로모션 설계를 통한 리텐션 개선</h4>
+          <ul>
+            <li>고객 행동 데이터 기반 A/B 테스트 진행 (푸시 문구, 혜택 페이지 UX 개선)</li>
+            <li>D+7 유저 재방문율 <mark>25% 상승</mark> 및 챌린지 미션 참여율 <mark>2배 증대</mark></li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="job">
+        <div class="job-top">
+          <div>
+            <h3>XYZ 스타트업</h3>
+            <p class="role">콘텐츠 마케팅 인턴</p>
+          </div>
+          <span class="period">2022.09 – 2023.02</span>
+        </div>
+        <div class="task">
+          <h4>브랜드 SNS 채널 오가닉 성장을 위한 콘텐츠 기획/제작</h4>
+          <ul>
+            <li>금융 상식 및 재테크 꿀팁 시리즈 카드뉴스 제작으로 인스타그램 팔로워 <mark>1만 명</mark> 신규 유입</li>
+            <li>금융 소비 트렌드 리포트 기획 및 바이럴 뉴스레터 발행</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="wrap">
+    <div class="sec-head">
+      <h2><small>주요 프로젝트</small>Projects</h2>
+      <span class="sec-num">02 / 04</span>
+    </div>
+
+    <article class="project">
+      <div class="project-main">
+        <div class="project-meta">
+          <span class="project-num">01</span>
+          <span class="chip edu">O2O Campaign</span>
+          <span class="chip intern">4인 팀 프로젝트</span>
+        </div>
+        <h3>핀테크 뱅킹 앱 신규 가입자 증대를 위한 O2O 팝업스토어 & 디지털 캠페인</h3>
+        <p>오프라인 브랜드 경험을 통한 젊은 층 중심의 신규 앱 유저 확보 프로젝트</p>
+        <dl class="kv">
+          <div><dt>기간</dt><dd>2023.10 – 2023.12</dd></div>
+          <div><dt>역할</dt>
+            <dd class="roles">
+              <span>오프라인 공간 브랜딩</span>
+              <span>온·오프라인 연계 혜택 설계</span>
+              <span>마케팅 영상 제작</span>
+              <span>광고 집행</span>
+            </dd>
+          </div>
+        </dl>
+      </div>
+      <div class="project-stats">
+        <div class="stat"><b>12,000<em>+</em></b><small>팝업스토어 누적 방문객</small></div>
+        <div class="stat"><b>1.5<em>만</em></b><small>앱 다운로드</small></div>
+        <div class="stat"><b><em>-</em>40%</b><small>CAC(고객 획득 비용) 절감</small></div>
+      </div>
+    </article>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills" class="wrap">
+    <div class="sec-head">
+      <h2><small>스킬 & 툴</small>Skills</h2>
+      <span class="sec-num">03 / 04</span>
+    </div>
+
+    <div class="skills">
+      <div class="skill-card">
+        <h3><i class="fa-solid fa-chart-line"></i> Growth & Analytics</h3>
+        <div class="pills">
+          <span class="pill">GA4</span><span class="pill">Amplitude</span><span class="pill">AppsFlyer</span><span class="pill">SQL</span>
+          <span class="pill">Braze</span><span class="pill">Stibee</span>
+        </div>
+        <div class="skill-note">
+          <span>· SQL로 데이터 추출 및 세그먼트 분석</span>
+          <span>· CRM & 앱 푸시 / 이메일 마케팅</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3><i class="fa-solid fa-pen-ruler"></i> Creative & Content</h3>
+        <div class="pills">
+          <span class="pill">Photoshop</span><span class="pill">Illustrator</span><span class="pill">Premiere Pro</span>
+          <span class="pill">Figma</span><span class="pill">Canva</span>
+        </div>
+        <div class="skill-note">
+          <span>· 숏폼 / 영상 마케팅 소재 직접 제작</span>
+          <span>· Figma · Canva 프로토타이핑</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3><i class="fa-solid fa-people-group"></i> Collaboration & Agile</h3>
+        <div class="pills">
+          <span class="pill">Slack</span><span class="pill">Notion</span><span class="pill">Jira</span><span class="pill">Miro</span>
+        </div>
+        <div class="skill-note">
+          <span>· 애자일 협업 환경 경험</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="wrap">
+    <div class="sec-head">
+      <h2><small>연락하기</small>Contact</h2>
+      <span class="sec-num">04 / 04</span>
+    </div>
+
+    <div class="contact">
+      <div class="form-box">
+        <form id="contact-form">
+          <div class="row2">
+            <div>
+              <label for="username">성함 / 소속 <span class="req">*</span></label>
+              <input type="text" id="username" name="username" placeholder="홍길동 / OO컴퍼니" required>
+            </div>
+            <div>
+              <label for="email">이메일 주소 <span class="req">*</span></label>
+              <input type="email" id="email" name="email" placeholder="example@email.com" required>
+            </div>
+          </div>
+          <div>
+            <label for="category">문의 유형</label>
+            <select id="category" name="category">
+              <option value="채용 제안">채용 제안</option>
+              <option value="프로젝트 협업">프로젝트 협업</option>
+              <option value="커피챗 / 네트워킹">커피챗 / 네트워킹</option>
+              <option value="기타 문의">기타 문의</option>
+            </select>
+          </div>
+          <div>
+            <label for="message">메시지 내용 <span class="req">*</span></label>
+            <textarea id="message" name="message" placeholder="내용을 입력해주세요..." required></textarea>
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="btn blue"><i class="fa-solid fa-paper-plane"></i> 메시지 보내기</button>
+            <button type="reset" class="btn ghost">초기화</button>
+          </div>
+          <p class="form-hint">'메시지 보내기'를 누르면 작성한 내용이 담긴 메일 앱이 열립니다.</p>
+        </form>
+      </div>
+
+      <div class="info-box">
+        <div>
+          <h3>Let's<br>Talk!</h3>
+          <p style="margin-top:10px">채용 제안, 프로젝트 협업, 커피챗 모두 환영합니다. 메시지를 남겨주시면 확인 후 빠르게 답변드리겠습니다.</p>
+        </div>
+        <div class="channels">
+          <a class="channel" href="mailto:raon531@naver.com">
+            <i class="fa-regular fa-envelope lead"></i>
+            <span class="c-text"><span class="c-label">Email</span><span class="c-val">raon531@naver.com</span></span>
+          </a>
+          <a class="channel" href="https://www.instagram.com/sewon__n" target="_blank" rel="noopener">
+            <i class="fa-brands fa-instagram lead"></i>
+            <span class="c-text"><span class="c-label">Instagram</span><span class="c-val">@sewon__n</span></span>
+          </a>
+          <a class="channel" href="https://linkedin.com" target="_blank" rel="noopener">
+            <i class="fa-brands fa-linkedin-in lead"></i>
+            <span class="c-text"><span class="c-label">LinkedIn</span><span class="c-val">linkedin.com/in</span></span>
+          </a>
+          <a class="channel" href="https://brunch.co.kr/@sewon" target="_blank" rel="noopener">
+            <i class="fa-solid fa-pen-nib lead"></i>
+            <span class="c-text"><span class="c-label">Brunch / Blog</span><span class="c-val">brunch.co.kr/@sewon</span></span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- Footer -->
+<footer>
+  <div class="wrap">
+    <div class="foot-big" aria-hidden="true">Choi <span class="outline">Sewon</span></div>
+    <div class="foot-bar">
+      <p>&copy; 2026 Choi Sewon. All rights reserved. <span class="mono">· Last updated 2026-09-30</span></p>
+      <a href="#" class="btn ghost top-btn">맨 위로 <i class="fa-solid fa-arrow-up"></i></a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // 다크 / 라이트 테마 전환
+  var root = document.documentElement;
+  var moon = document.getElementById('icon-moon');
+  var sun = document.getElementById('icon-sun');
+  function syncIcons() {
+    var dark = root.classList.contains('dark');
+    moon.style.display = dark ? 'none' : '';
+    sun.style.display = dark ? '' : 'none';
+  }
+  syncIcons();
+  document.getElementById('theme-toggle').addEventListener('click', function () {
+    root.classList.toggle('dark');
+    try { localStorage.setItem('color-theme', root.classList.contains('dark') ? 'dark' : 'light'); } catch (e) {}
+    syncIcons();
+  });
+
+  // 문의 폼: 작성 내용으로 메일 앱 열기 (별도 서버 없이 동작)
+  document.getElementById('contact-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var f = e.target;
+    var subject = '[' + f.category.value + '] ' + f.username.value + '님의 메시지';
+    var body = '보낸 사람: ' + f.username.value + '\n회신 이메일: ' + f.email.value + '\n문의 유형: ' + f.category.value + '\n\n' + f.message.value;
+    window.location.href = 'mailto:raon531@naver.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+  });
+</script>
+</body>
+</html>
